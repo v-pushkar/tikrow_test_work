@@ -1,0 +1,26 @@
+.main-naw {
+    .MuiToolbar-root {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 10px;
+        padding-right: 10px;
+
+
+    }
+
+    .MuiContainer-root {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .logo-wrapp {
+        display: inline-block;
+        width: 150px;
+
+        img {
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,13 @@
+@import "./../../scss/varibals";
+
+.item-list {
+    [data-colors="btn-darkblue"] {
+        color: #ffffff;
+        background-color: $color-darkblue;
+    }
+
+    [data-colors="btn-mint"] {
+        color: #ffffff;
+        background-color: $color-mint;
+    }
+}

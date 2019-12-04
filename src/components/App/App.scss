@@ -1,0 +1,14 @@
+@import "./../../scss/mixins";
+
+.AppWrapper {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+
+    .MuiContainer-root {
+        @include for-phone-only {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+    }
+
+
+}
