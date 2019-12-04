@@ -40,7 +40,7 @@ export default function MenuAppBar() {
 
   return (
     <div className={`${classes.root} main-naw`}>
-      <AppBar data-name="dd" position="static" color="text.secondary">
+      <AppBar position="static" color="text.secondary">
         <Container maxWidth="lg">
           <Toolbar>
             <div className="logo-wrapp">

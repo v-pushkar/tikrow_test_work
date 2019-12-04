@@ -8,8 +8,8 @@ export default class TestTicrowService {
       start_date: 1577635200,
       end_date: 1577646000,
       time: 3,
-      position: "!Kasjer",
-      customer: "LEROY-MERLIN STARONIWA",
+      position: "!Kasjer[TEST]",
+      customer: "LEROY-MERLIN STARONIWA[TEST]",
       rate_total: 29.7,
       rate_hour: 9.9,
       alert_rate: null,
@@ -23,8 +23,8 @@ export default class TestTicrowService {
       start_date: 1577635200,
       end_date: 1577646000,
       time: 3,
-      position: "!Kasjer",
-      customer: "LEROY-MERLIN STARONIWA",
+      position: "!Kasjer[TEST]",
+      customer: "LEROY-MERLIN STARONIWA[TEST]",
       rate_total: 29.7,
       rate_hour: 9.9,
       alert_rate: null,
@@ -38,8 +38,8 @@ export default class TestTicrowService {
       start_date: 1577635200,
       end_date: 1577646000,
       time: 3,
-      position: "!Kasjer",
-      customer: "LEROY-MERLIN STARONIWA",
+      position: "!Kasjer[TEST]",
+      customer: "LEROY-MERLIN STARONIWA[TEST]",
       rate_total: 29.7,
       rate_hour: 9.9,
       alert_rate: null,
@@ -48,5 +48,24 @@ export default class TestTicrowService {
   ];
   getFetchAll = async () => {
     return this._dataFetchAll;
+  };
+  _getImg = () => {
+    return `https://placeimg.com/600/400/tech`;
+  };
+
+  getFetchItemDetails = {
+    img: this._getImg,
+    id: "11507[TEST]",
+    availability: "item.availability_status[TEST]",
+    start: "11.12.2019[TEST]",
+    end: "25.12.2019[TEST]",
+    time: "11:00[TEST]",
+    position: "position[TEST]",
+    customer: "consumer[TEST]",
+    rate: "20zl[TEST]",
+    rateHouer: "20zl[TEST]",
+    adress: {},
+    requirements: "requirements[TEST]",
+    description: "description[TEST]"
   };
 }

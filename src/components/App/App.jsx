@@ -5,7 +5,9 @@ import TestTikrowService from "./../../servises/test-data-service";
 import ItemList from "./../ItemList";
 import Header from "./../Header";
 import TabPanel from "./../TabPanel";
-import PaperBox from "./../PaperBox";
+import ItemDetails from "./../ItemDetails";
+import { TikrowServiceProvider } from "./../tikrow-servise-context";
+
 import "./App.scss";
 
 class App extends Component {
@@ -17,9 +19,12 @@ class App extends Component {
   render() {
     return (
       <div className="AppWrapper">
-        <Header />
-        <TabPanel />
-        <ItemList getData={this.state.tikrowService} />
+        <TikrowServiceProvider value={this.state.tikrowService}>
+          <Header />
+          <TabPanel />
+          {/* <ItemList getData={this.state.tikrowService} /> */}
+          <ItemDetails getData={this.state.tikrowService} />
+        </TikrowServiceProvider>
       </div>
     );
   }

@@ -10,6 +10,10 @@ import Container from "@material-ui/core/Container";
 import ItemList from "./../ItemList";
 import PaperBox from "./../PaperBox";
 
+const Info = props => {
+  return <div>Value: {props.value}</div>;
+};
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -65,21 +69,21 @@ export default function SimpleTabs() {
             aria-label="simple tabs example"
             variant="fullWidth"
           >
-            <Tab label="Item One" {...a11yProps(0)} />
-            <Tab label="Item Two" {...a11yProps(1)} />
-            <Tab label="Item Three" {...a11yProps(2)} />
+            <Tab label="Aktualne" {...a11yProps(0)} />
+            <Tab label="Planowane" {...a11yProps(1)} />
+            <Tab label="Zakonczone" {...a11yProps(2)} />
           </Tabs>
         </Container>
       </AppBar>
       <PaperBox />
       <TabPanel value={value} index={0}>
-        {/* <ItemList/> */}
+        1: <Info value={value} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        2: <Info value={value} />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        3: <Info value={value} />
       </TabPanel>
     </div>
   );

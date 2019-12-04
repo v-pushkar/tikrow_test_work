@@ -6,7 +6,6 @@ import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import withData from "../hoc/with-data";
-
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Grid from "@material-ui/core/Grid";
@@ -44,7 +43,7 @@ const ItemList = props => {
         <ExpansionPanelDetails>
           <Grid item alignItems="center">
             <ButtonGroup
-              fullWidth
+              fullWidth={true}
               alignItems="center"
               size="large"
               aria-label="full width contained primary button group"
