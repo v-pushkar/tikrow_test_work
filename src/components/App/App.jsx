@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import TikrowService from "./../../servises/tikrow-service";
 import Header from "./../Header";
-import { TikrowServiceProvider } from "./../tikrow-servise-context";
+
 import TaskPage from "./../pages/tasks-page";
 
 import "./App.scss";
@@ -15,10 +15,8 @@ class App extends Component {
   render() {
     return (
       <div className="AppWrapper">
-        
-          <Header />
-          <TaskPage />
-        
+        <Header />
+        <TaskPage />
       </div>
     );
   }

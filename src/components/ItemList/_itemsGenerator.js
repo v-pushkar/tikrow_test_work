@@ -3,12 +3,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Grid from "@material-ui/core/Grid";
-
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -16,8 +14,12 @@ const useStyles = makeStyles(theme => ({
   },
   heading: {
     width: "100%",
+
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular
+  },
+  itemsrow: {
+    marginBottom: "5px"
   }
 }));
 
@@ -34,21 +36,20 @@ const ItemGeneraitor = props => {
           color="text.primary"
         >
           <div className={classes.heading}>
-            <div>
+            <div className={classes.itemsrow}>
               <label className="date-label">{item.start}</label>
               <span>{item.time}</span>
               <label className="rate-label">{item.rate}zl</label>
             </div>
 
-            <div>{item.position}</div>
-            <div>{item.customer}</div>
+            <div className={classes.itemsrow}>{item.position}</div>
+            <div className={classes.itemsrow}>{item.customer}</div>
           </div>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Grid item >
+          <Grid item xs={12}>
             <ButtonGroup
-              fullWidth={true}
-              alignItems="center"
+              fullWidth
               size="large"
               aria-label="full width contained primary button group"
             >

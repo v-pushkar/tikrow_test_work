@@ -1,7 +1,9 @@
 @import "./../../scss/mixins";
 
 .message {
-    .MuiPaper-root {
+
+    .MuiPaper-root,
+    .MuiContainer-root {
         @include for-phone-only {
             padding-left: 5px;
             padding-right: 5px;

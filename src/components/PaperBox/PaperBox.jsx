@@ -34,8 +34,7 @@ export default function PaperSheet() {
             Twoj kwestionariusz zostal zweryfikowany.
             <Button
               className={classes.button}
-              href="#text-buttons"
-              color="text.primary"
+              href="#text-buttons"            
             >
               EDYTUJ
             </Button>

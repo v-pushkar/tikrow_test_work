@@ -21,7 +21,6 @@ export default class taskPage extends Component {
       event.target.nodeName === "SPAN"
         ? event.target.parentElement.value
         : event.target.value;
-    console.log("item id", id);
     this.setState({
       activeIdemId: id,
       openDetails: true

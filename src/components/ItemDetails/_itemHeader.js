@@ -7,23 +7,22 @@ import Container from "@material-ui/core/Container";
 const ItemHeader = props => {
   return (
     <div className="item-header-wrap">
-      <Container  maxWidth="sm">
+      <Container maxWidth="sm">
         <div className="item-header">
           <div className="beack-link">
-            <Button href="#text-buttons" onClick={props.onclick}>
+            <Button onClick={props.onclick}>
               <ArrowBackIcon />
             </Button>
           </div>
           <div>
-          <Typography variant="h5" gutterBottom>
-            Zadanie
-          </Typography>
-          <Typography variant="subtitle1" gutterBottom>
-            {props.status}
-          </Typography>
-        </div>
+            <Typography variant="h6" gutterBottom>
+              Zadanie
+            </Typography>
+            <Typography variant="subtitle1" gutterBottom>
+              {props.status}
+            </Typography>
           </div>
-          
+        </div>
       </Container>
     </div>
   );

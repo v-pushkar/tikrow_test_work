@@ -88,8 +88,7 @@ class ItemDetails extends Component {
         <div className="item-header-wrap">
           <Container maxWidth="sm">
             <ButtonGroup
-              fullWidth={true}
-              alignItems="center"
+              fullWidth
               size="large"
               aria-label="full width contained primary button group"
             >

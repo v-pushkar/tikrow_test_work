@@ -6,8 +6,8 @@ import Typography from "@material-ui/core/Typography";
 const DetailsRow = props => {
   const { data } = props;
   if (data.length > 1) {
-    const row = data.map(i => (
-      <div className="inline-block">
+    const row = data.map((i, index) => (
+      <div key={index} className="flex-tem">
         <Typography variant="body2" gutterBottom>
           {i.label}
         </Typography>
