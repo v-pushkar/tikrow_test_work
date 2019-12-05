@@ -11,8 +11,7 @@ import "./Header.scss";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
-   
+    flexGrow: 1
   },
   menuButton: {
     marginRight: theme.spacing(2)
@@ -20,21 +19,21 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1
   },
-  bg:{
+  bg: {
     backgroundColor: "#F5F5F5"
   }
 }));
 
 export default function MenuAppBar() {
   const classes = useStyles();
-  const [setAnchorEl] = React.useState(null);
+
   const handleMenu = event => {
-    setAnchorEl(event.currentTarget);
+    console.log(`click)))`);
   };
 
   return (
     <div className={`${classes.root} main-naw`}>
-      <AppBar position="static" >
+      <AppBar position="static">
         <Container maxWidth="lg">
           <Toolbar>
             <div className="logo-wrapp">
