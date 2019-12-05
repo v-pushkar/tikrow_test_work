@@ -4,6 +4,7 @@ import Container from "@material-ui/core/Container";
 import Spiner from "../UI/spiner";
 import ErrorIndicator from "../UI/errorIndicator";
 import ItemGeneraitor from "./_itemsGenerator";
+import withDataList from "./../HOC/with-data-list";
 
 import "./ItemList.scss";
 
@@ -17,65 +18,20 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default class ItemList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: null,
-      loading: true,
-      hasError: false
-    };
-  }
+const ItemList = props => {
+  const classes = useStyles();
 
-  componentDidUpdate(prevProps) {
-    if (this.props.getData !== prevProps.getData) {
-      this.update();
-    }
-  }
-  componentDidMount() {
-    this.update();
-  }
+  return (
+    <Container maxWidth="sm">
+      <div
+        className={`${classes.root} item-list ${
+          props.openDetails ? "close" : "open"
+        }`}
+      >
+        <ItemGeneraitor data={props.data} onItemClick={props.onItemClick} />
+      </div>
+    </Container>
+  );
+};
 
-  update() {
-    const { getData } = this.props;
-    getData
-      .getFetchAll()
-      .then(data => {
-        this.setState({
-          data,
-          loading: false
-        });
-      })
-      .catch(() => {
-        this.setState({ hasError: true });
-      });
-  }
-
-  componentDidCatch() {
-    this.setState({
-      isError: true
-    });
-  }
-  classes = () => useStyles();
-
-  render() {
-    const { data, hasError } = this.state;
-    if (!data) {
-      return <Spiner />;
-    }
-    if (hasError) {
-      return <ErrorIndicator />;
-    }
-    return (
-      <Container maxWidth="sm">
-        <div
-          className={`${this.classes.root} item-list ${
-            this.props.openDetails ? "close": "open" 
-          }`}
-        >
-          <ItemGeneraitor data={data} onItemClick={this.props.onItemClick} />
-        </div>
-      </Container>
-    );
-  }
-}
+export default withDataList(ItemList);

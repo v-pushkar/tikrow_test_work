@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import Spiner from "../spiner";
-import ErrorIndicator from "../errorIndicator";
+import Spiner from "../UI/spiner";
+import ErrorIndicator from "../UI/errorIndicator";
 
-const withData = View => {
+const withDataList = View => {
   return class extends Component {
     state = {
       data: null,
       loading: true,
-      hasError: false
+      hasError: true
     };
     componentDidUpdate(prevProps) {
       if (this.props.getData !== prevProps.getData) {
@@ -19,8 +19,8 @@ const withData = View => {
     }
 
     update() {
-      this.props
-        .getData()
+      this.props.getData
+        .getFetchAll()
         .then(data => {
           this.setState({
             data,
@@ -28,20 +28,24 @@ const withData = View => {
           });
         })
         .catch(() => {
-          this.state({ hasError: true });
+          this.setState({ hasError: true });
         });
     }
 
     componentDidCatch() {
       this.setState({
-        isError: true
+        hasError: true
       });
     }
 
     render() {
       const { data, hasError } = this.state;
       if (!data) {
-        return <Spiner />;
+        return (
+          <div>
+            <Spiner />
+          </div>
+        );
       }
       if (hasError) {
         return <ErrorIndicator />;
@@ -51,4 +55,4 @@ const withData = View => {
   };
 };
 
-export default withData;
+export default withDataList;
