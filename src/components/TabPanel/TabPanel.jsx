@@ -7,12 +7,8 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
-import ItemList from "./../ItemList";
-import PaperBox from "./../PaperBox";
 
-const Info = props => {
-  return <div>Value: {props.value}</div>;
-};
+import PaperBox from "./../PaperBox";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -62,7 +58,7 @@ export default function SimpleTabs(props) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="text.primery">
+      <AppBar position="static" color="default">
         <Container maxWidth="lg">
           <Tabs
             value={value}
@@ -77,15 +73,6 @@ export default function SimpleTabs(props) {
         </Container>
       </AppBar>
       <PaperBox />
-      {/* <TabPanel value={value} index={0}>
-        1: <Info value={value} />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        2: <Info value={value} />
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        3: <Info value={value} />
-      </TabPanel> */}
     </div>
   );
 }

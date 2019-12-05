@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import TikrowService from "./../../servises/tikrow-service";
 import Header from "./../Header";
 import { TikrowServiceProvider } from "./../tikrow-servise-context";
@@ -16,10 +15,10 @@ class App extends Component {
   render() {
     return (
       <div className="AppWrapper">
-        <TikrowServiceProvider value={this.state.tikrowService}>
+        
           <Header />
           <TaskPage />
-        </TikrowServiceProvider>
+        
       </div>
     );
   }

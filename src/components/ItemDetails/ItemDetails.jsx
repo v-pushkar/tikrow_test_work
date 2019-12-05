@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import Spiner from "./../UI/spiner";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
@@ -49,7 +48,6 @@ class ItemDetails extends Component {
           data,
           loading: false
         });
-        console.log("Data img", data);
       })
       .catch(() => {
         this.setState({ hasError: true });
@@ -68,7 +66,11 @@ class ItemDetails extends Component {
     });
 
     return (
-      <div className={`item-details-wrap ${this.props.openDetails? "open" : "close"}`}>
+      <div
+        className={`item-details-wrap ${
+          this.props.openDetails ? "open" : "close"
+        }`}
+      >
         <ItemHeader
           onclick={this.props.onItemDetailsClose}
           status={this.state.data.availability}
@@ -77,7 +79,7 @@ class ItemDetails extends Component {
           <Grid container spacing={0} justify="space-between">
             <Grid item xs={12}>
               <div className="img-wrap">
-                <img src={this.state.data.img} />
+                <img src={this.state.data.img} alt="location_foto" />
               </div>
             </Grid>
             {itemrows}

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
@@ -8,13 +8,14 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
+
 
 const useStyles = makeStyles(theme => ({
   root: {
     width: "100%"
   },
   heading: {
+    width: "100%",
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular
   }
@@ -32,16 +33,19 @@ const ItemGeneraitor = props => {
           id="panel1a-header"
           color="text.primary"
         >
-          <Typography className={classes.heading}>
-            <div>{item.start}</div>
-            <div>{item.time}</div>
-            <div>{item.rate}</div>
+          <div className={classes.heading}>
+            <div>
+              <label className="date-label">{item.start}</label>
+              <span>{item.time}</span>
+              <label className="rate-label">{item.rate}zl</label>
+            </div>
+
             <div>{item.position}</div>
             <div>{item.customer}</div>
-          </Typography>
+          </div>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Grid item alignItems="center">
+          <Grid item >
             <ButtonGroup
               fullWidth={true}
               alignItems="center"

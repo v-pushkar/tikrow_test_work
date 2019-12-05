@@ -10,7 +10,7 @@ export default class TicrowService {
         resived ${res.status}`);
     }
     const data = await res.json();
-    console.log("data", data);
+
     return data;
   }
   getFetchAll = async () => {
@@ -19,7 +19,7 @@ export default class TicrowService {
   };
   getFetchItemDetails = async id => {
     const res = await this.getResource(this._itemBase + id);
-    console.log("get item", res);
+
     return this._transformItemDetails(res);
   };
   _getImg = id => {

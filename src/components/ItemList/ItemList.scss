@@ -32,4 +32,14 @@
             color: $color-darkblue;
         }
     }
+
+    .date-label {
+        font-weight: bold;
+        margin-right: 15px;
+        font-weight: 120%;
+    }
+
+    .rate-label {
+        float: right;
+    }
 }

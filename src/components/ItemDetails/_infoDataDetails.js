@@ -24,7 +24,7 @@ const MapInfo = data => {
       <LocationOnIcon />{" "}
       <a
         href={`http://www.google.com/maps/place/${lan},${lon}`}
-        target="_blank"
+        target="_blank" rel="noopener noreferrer"
       >
         <span>MAP</span>
       </a>
@@ -33,9 +33,7 @@ const MapInfo = data => {
 };
 
 const infoDataDetails = data => {
-  const {
-    id,
-    img,
+  const {    
     position,
     start,
     time,

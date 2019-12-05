@@ -7,7 +7,7 @@ const withDataList = View => {
     state = {
       data: null,
       loading: true,
-      hasError: true
+      hasError: false
     };
     componentDidUpdate(prevProps) {
       if (this.props.getData !== prevProps.getData) {
