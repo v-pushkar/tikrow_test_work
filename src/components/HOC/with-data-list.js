@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Spiner from "../UI/spiner";
-import ErrorIndicator from "../UI/errorIndicator";
+import Spiner from "../spiner";
+import ErrorIndicator from "../errorIndicator";
 
 const withData = View => {
   return class extends Component {
@@ -15,12 +15,12 @@ const withData = View => {
       }
     }
     componentDidMount() {
-      this.update();      
+      this.update();
     }
 
     update() {
-      const { getData } = this.props;
-      getData.getFetchAll()
+      this.props
+        .getData()
         .then(data => {
           this.setState({
             data,

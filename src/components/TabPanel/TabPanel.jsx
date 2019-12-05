@@ -51,12 +51,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SimpleTabs() {
+export default function SimpleTabs(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    props.onFilterChange(newValue);
   };
 
   return (
@@ -76,7 +77,7 @@ export default function SimpleTabs() {
         </Container>
       </AppBar>
       <PaperBox />
-      <TabPanel value={value} index={0}>
+      {/* <TabPanel value={value} index={0}>
         1: <Info value={value} />
       </TabPanel>
       <TabPanel value={value} index={1}>
@@ -84,7 +85,7 @@ export default function SimpleTabs() {
       </TabPanel>
       <TabPanel value={value} index={2}>
         3: <Info value={value} />
-      </TabPanel>
+      </TabPanel> */}
     </div>
   );
 }

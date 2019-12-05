@@ -35,8 +35,8 @@ export default class TicrowService {
   _transformAll = items => {
     return {
       id: items.id,
-      start: items.start_data,
-      end: items.end_date,
+      start: this._getDate(items.start_date),
+      end: this._getDate(items.end_date),
       time: items.time,
       position: items.position,
       customer: items.customer,

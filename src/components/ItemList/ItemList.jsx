@@ -1,14 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import ExpansionPanel from "@material-ui/core/ExpansionPanel";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-import Typography from "@material-ui/core/Typography";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import withData from "../hoc/with-data";
-import Button from "@material-ui/core/Button";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
-import Grid from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container";
+import Spiner from "../UI/spiner";
+import ErrorIndicator from "../UI/errorIndicator";
+import ItemGeneraitor from "./_itemsGenerator";
 
 import "./ItemList.scss";
 
@@ -22,42 +17,65 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const ItemList = props => {
-  const classes = useStyles();
-  const { data } = props;
+export default class ItemList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: null,
+      loading: true,
+      hasError: false
+    };
+  }
 
-  const items = data.map(item => {
+  componentDidUpdate(prevProps) {
+    if (this.props.getData !== prevProps.getData) {
+      this.update();
+    }
+  }
+  componentDidMount() {
+    this.update();
+  }
+
+  update() {
+    const { getData } = this.props;
+    getData
+      .getFetchAll()
+      .then(data => {
+        this.setState({
+          data,
+          loading: false
+        });
+      })
+      .catch(() => {
+        this.setState({ hasError: true });
+      });
+  }
+
+  componentDidCatch() {
+    this.setState({
+      isError: true
+    });
+  }
+  classes = () => useStyles();
+
+  render() {
+    const { data, hasError } = this.state;
+    if (!data) {
+      return <Spiner />;
+    }
+    if (hasError) {
+      return <ErrorIndicator />;
+    }
     return (
-      <ExpansionPanel key={item.id}>
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-          color="text.primary"
+      <Container maxWidth="sm">
+        <div
+          className={`${this.classes.root} item-list ${
+            this.props.openDetails ? "close": "open" 
+          }`}
         >
-          <Typography className={classes.heading}>
-            <div>id: {item.id}</div>
-            <div>customer: {item.customer}</div>
-          </Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Grid item alignItems="center">
-            <ButtonGroup
-              fullWidth={true}
-              alignItems="center"
-              size="large"
-              aria-label="full width contained primary button group"
-            >
-              <Button data-colors="btn-darkblue">POKAZ</Button>
-              <Button data-colors="btn-mint">AKCEPTUJ</Button>
-            </ButtonGroup>
-          </Grid>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
+          <ItemGeneraitor data={data} onItemClick={this.props.onItemClick} />
+        </div>
+      </Container>
     );
-  });
-
-  return <div className={`${classes.root} item-list`}>{items}</div>;
-};
-
-export default withData(ItemList);
+  }
+}

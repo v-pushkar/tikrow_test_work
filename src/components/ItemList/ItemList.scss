@@ -1,6 +1,20 @@
 @import "./../../scss/varibals";
+@import "./../../scss/mixins";
 
 .item-list {
+    padding: 20px 0;
+
+    @include for-phone-only {
+
+        &.open {
+            left: 0
+        }
+
+        &.close {
+            display: none;
+        }
+    }
+
     [data-colors="btn-darkblue"] {
         color: #ffffff;
         background-color: $color-darkblue;

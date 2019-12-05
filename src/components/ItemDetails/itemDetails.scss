@@ -1,7 +1,86 @@
+@import "./../../scss/varibals";
+@import "./../../scss/mixins";
+
 .item-details-wrap {
+    transition: all 0.4s;
+
+    @include for-phone-only {
+        position: absolute;
+        top: 0;
+        z-index: 10;
+        background-color: #fff;
+        transition: all 0.4s;
+
+        &.open {
+            left: 0
+        }
+
+        &.close {
+            left: 100vw;
+        }
+    }
+
+
+
+
+    [data-colors="btn-mint"] {
+        color: #ffffff;
+        background-color: $color-mint;
+
+        &:hover {
+            color: $color-darkblue;
+        }
+    }
+
     .img-wrap {
+        padding: 10px 0;
+
         img {
             max-width: 100%;
         }
     }
+
+    .item-detail-row-1 {
+        margin-bottom: 10px;
+    }
+
+    .item-detail-row-2 {
+        @extend .item-detail-row-1;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px 5px;
+        width: 100%;
+
+    }
+
+    .map-link-block {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .map-link-block {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .item-header-wrap {
+        background-color: #F5F5F5;
+        min-height: 64px;
+        padding: 10px 0;
+
+
+        .item-header {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    // .MuiContainer-root {
+    //     @include for-phone-only {
+    //         padding: 15px;
+    //     }
+    // }
 }

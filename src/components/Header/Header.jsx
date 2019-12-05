@@ -4,8 +4,6 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
 import ShareIcon from "@material-ui/icons/Share";
 import Counter from "./../Counter";
 import Container from "@material-ui/core/Container";
@@ -25,17 +23,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function MenuAppBar() {
-  const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
+  const classes = useStyles();  
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
   const handleMenu = event => {
     setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
   };
 
   return (
@@ -45,8 +38,7 @@ export default function MenuAppBar() {
           <Toolbar>
             <div className="logo-wrapp">
               <img src="https://tikrow.com/images/logoTikrow-light.svg" />
-            </div>
-            {auth && (
+            </div>            
               <div>
                 <IconButton
                   aria-label="account of current user"
@@ -74,27 +66,8 @@ export default function MenuAppBar() {
                   color="inherit"
                 >
                   <AccountCircle fontSize="large" color="primary" />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right"
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right"
-                  }}
-                  open={open}
-                  onClose={handleClose}
-                >
-                  <MenuItem onClick={handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={handleClose}>My account</MenuItem>
-                </Menu>
-              </div>
-            )}
+                </IconButton>                
+              </div>            
           </Toolbar>
         </Container>
       </AppBar>
