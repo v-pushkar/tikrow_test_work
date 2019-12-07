@@ -36,6 +36,7 @@ const infoDataDetails = data => {
   const {    
     position,
     start,
+    end,
     time,
     rate,
     rateHouer,
@@ -46,8 +47,8 @@ const infoDataDetails = data => {
   return [
     { size: 12, label: "Stanowisko", text: position },
     [
-      { size: 6, label: "Data", text: start },
-      { size: 6, label: "Czas", text: time }
+      { size: 6, label: "Data", text: start.date },
+      { size: 6, label: "Czas", text: `${start.time} - ${end.time} (${time}h)` }
     ],
     {
       size: 12,
