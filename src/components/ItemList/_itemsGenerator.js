@@ -37,8 +37,8 @@ const ItemGeneraitor = props => {
         >
           <div className={classes.heading}>
             <div className={classes.itemsrow}>
-              <label className="date-label">{item.start}</label>
-              <span>{item.time}</span>
+              <label className="date-label">{item.start.date}</label>
+              <span>{item.start.time} - {item.end.time}({item.time}h)</span>
               <label className="rate-label">{item.rate}zl</label>
             </div>
 

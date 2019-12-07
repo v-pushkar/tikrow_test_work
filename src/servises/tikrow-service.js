@@ -25,13 +25,34 @@ export default class TicrowService {
   _getImg = id => {
     return this._imgBase + id;
   };
-  _getDate = value => {
-    const date = new Date(value);
-    return date
-      .toLocaleDateString()
-      .split("/")
-      .join(".");
+  _getDate = UNIX_timestamp => {
+    const a = new Date(UNIX_timestamp * 1000);
+    const months = [
+      "01",
+      "02",
+      "03",
+      "04",
+      "05",
+      "06",
+      "07",
+      "08",
+      "09",
+      "10",
+      "11",
+      "12"
+    ];
+    const year = a.getFullYear();
+    const month = months[a.getMonth()];
+    const date = a.getDate();
+    const hour = a.getHours();
+    const min = a.getMinutes();
+
+    const d = date + "." + month + "." + year;
+    const t = hour + ":" + min;
+    const fullDate = { date: d, time: t };
+    return fullDate;
   };
+
   _transformAll = items => {
     return {
       id: items.id,
