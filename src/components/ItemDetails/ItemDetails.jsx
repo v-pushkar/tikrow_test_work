@@ -7,9 +7,6 @@ import infoDataDetails from "./_infoDataDetails.js";
 import Button from "@material-ui/core/Button";
 import ItemHeader from "./_itemHeader";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
-import withDataDetails from "./../HOC/with-data-detiles.js";
-
-
 
 const ItemDetails = props => {
   const itemrows = infoDataDetails(props.data).map((item, i) => {
@@ -49,4 +46,4 @@ const ItemDetails = props => {
   );
 };
 
-export default withDataDetails(ItemDetails);
+export default ItemDetails;

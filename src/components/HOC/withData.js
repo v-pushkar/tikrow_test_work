@@ -2,25 +2,27 @@ import React, { Component } from "react";
 import Spiner from "../UI/spiner";
 import ErrorIndicator from "../UI/errorIndicator";
 
-const withDataList = View => {
+const withData = (View, getData) => {
   return class extends Component {
-    state = {
-      data: null,
-      loading: true,
-      hasError: false
-    };
+    constructor(props) {
+      super(props);
+      this.state = {
+        data: null,
+        loading: true,
+        hasError: false
+      };
+    }
     componentDidUpdate(prevProps) {
       if (this.props.getData !== prevProps.getData) {
         this.update();
       }
     }
-    componentDidMount() {
+    componentDidMount() {           
       this.update();
     }
 
     update() {
-      this.props.getData
-        .getFetchAll()
+     getData(this.props.id)
         .then(data => {
           this.setState({
             data,
@@ -55,4 +57,4 @@ const withDataList = View => {
   };
 };
 
-export default withDataList;
+export default withData;

@@ -1,9 +1,11 @@
 import React, { Component, Fragment } from "react";
-import ItemList from "./../../ItemList";
-import ItemDetails from "./../../ItemDetails";
 import TikrowService from "./../../../servises/tikrow-service";
 import TabPanel from "./../../TabPanel";
 import { Route, BrowserRouter as Router, Switch, Link } from "react-router-dom";
+import {
+  ItemDetailstWithData,
+  ItemListWithData
+} from "../../tikrow-components";
 
 export default class taskPage extends Component {
   constructor(props) {
@@ -58,29 +60,13 @@ export default class taskPage extends Component {
     return (
       <div>
         <Router>
-          {/* <TabPanel onFilterChange={this.onFilterChange} />
-        {!this.state.openDetails && (
-          <ItemList
-            openDetails={this.state.openDetails}
-            getData={this.state.tikrowService}
-            onItemClick={this.onItemSelect}
-          />
-        )}
-        {this.state.openDetails && (
-          <ItemDetails
-            openDetails={this.state.openDetails}
-            onItemDetailsClose={this.onItemDetailsClose}
-            getData={this.state.tikrowService}
-            id={this.state.activeIdemId}
-          />
-        )} */}
           <Switch>
             <Route
               path="/list"
               render={() => (
                 <Fragment>
                   <TabPanel onFilterChange={this.onFilterChange} />
-                  <ItemList
+                  <ItemListWithData
                     openDetails={this.state.openDetails}
                     getData={this.state.tikrowService}
                     onItemClick={this.onItemSelect}
@@ -91,9 +77,8 @@ export default class taskPage extends Component {
             <Route
               path="/detiles/:id?"
               render={({ match }) => {
-                console.log("match", match.params.id);
                 return (
-                  <ItemDetails
+                  <ItemDetailstWithData
                     openDetails={this.state.openDetails}
                     onItemDetailsClose={this.onItemDetailsClose}
                     getData={this.state.tikrowService}
