@@ -7,6 +7,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Grid from "@material-ui/core/Grid";
+import { Link, Redirect } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -38,7 +39,9 @@ const ItemGeneraitor = props => {
           <div className={classes.heading}>
             <div className={classes.itemsrow}>
               <label className="date-label">{item.start.date}</label>
-              <span>{item.start.time} - {item.end.time}({item.time}h)</span>
+              <span>
+                {item.start.time} - {item.end.time}({item.time}h)
+              </span>
               <label className="rate-label">{item.rate}zl</label>
             </div>
 
@@ -53,15 +56,18 @@ const ItemGeneraitor = props => {
               size="large"
               aria-label="full width contained primary button group"
             >
-              <Button
+              <Link
+                className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButtonGroup-grouped MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlined MuiButton-outlinedSizeLarge MuiButton-sizeLarge MuiButton-fullWidth"
                 data-colors="btn-darkblue"
                 value={item.id}
-                onClick={props.onItemClick}
+                to={`/detiles/${item.id}`}
               >
                 POKAZ
-              </Button>
+              </Link>
+
               <Button data-colors="btn-mint">AKCEPTUJ</Button>
             </ButtonGroup>
+            
           </Grid>
         </ExpansionPanelDetails>
       </ExpansionPanel>

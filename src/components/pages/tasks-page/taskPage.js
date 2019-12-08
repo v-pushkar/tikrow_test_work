@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import ItemList from "./../../ItemList";
 import ItemDetails from "./../../ItemDetails";
 import TikrowService from "./../../../servises/tikrow-service";
 import TabPanel from "./../../TabPanel";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 export default class taskPage extends Component {
   constructor(props) {
@@ -56,7 +57,8 @@ export default class taskPage extends Component {
   render() {
     return (
       <div>
-        <TabPanel onFilterChange={this.onFilterChange} />
+        <Router>
+          {/* <TabPanel onFilterChange={this.onFilterChange} />
         {!this.state.openDetails && (
           <ItemList
             openDetails={this.state.openDetails}
@@ -71,7 +73,37 @@ export default class taskPage extends Component {
             getData={this.state.tikrowService}
             id={this.state.activeIdemId}
           />
-        )}
+        )} */}
+          <Switch>
+            <Route
+              path="/list"
+              render={() => (
+                <Fragment>
+                  <TabPanel onFilterChange={this.onFilterChange} />
+                  <ItemList
+                    openDetails={this.state.openDetails}
+                    getData={this.state.tikrowService}
+                    onItemClick={this.onItemSelect}
+                  />
+                </Fragment>
+              )}
+            />
+            <Route
+              path="/detiles/:id?"
+              render={({ match }) => {
+                console.log("match", match.params.id);
+                return (
+                  <ItemDetails
+                    openDetails={this.state.openDetails}
+                    onItemDetailsClose={this.onItemDetailsClose}
+                    getData={this.state.tikrowService}
+                    id={match.params.id}
+                  />
+                );
+              }}
+            />
+          </Switch>
+        </Router>
       </div>
     );
   }
