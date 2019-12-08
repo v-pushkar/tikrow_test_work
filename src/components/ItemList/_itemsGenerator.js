@@ -7,7 +7,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Grid from "@material-ui/core/Grid";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -67,7 +67,6 @@ const ItemGeneraitor = props => {
 
               <Button data-colors="btn-mint">AKCEPTUJ</Button>
             </ButtonGroup>
-            
           </Grid>
         </ExpansionPanelDetails>
       </ExpansionPanel>
