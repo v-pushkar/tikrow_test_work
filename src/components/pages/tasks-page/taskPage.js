@@ -3,7 +3,7 @@ import ItemList from "./../../ItemList";
 import ItemDetails from "./../../ItemDetails";
 import TikrowService from "./../../../servises/tikrow-service";
 import TabPanel from "./../../TabPanel";
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import { Route, BrowserRouter as Router, Switch, Link } from "react-router-dom";
 
 export default class taskPage extends Component {
   constructor(props) {
@@ -101,6 +101,14 @@ export default class taskPage extends Component {
                   />
                 );
               }}
+            />
+            <Route
+              path="/"
+              render={() => (
+                <div className="MuiButtonBase-root">
+                  <Link to="/list">Go to items list</Link>
+                </div>
+              )}
             />
           </Switch>
         </Router>
